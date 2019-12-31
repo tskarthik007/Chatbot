@@ -1,10 +1,13 @@
-const express = require('express')
-const app = express()
+const express = require('express');
+const bodyParser= require('body-parser');
+const app = express();
 
-app.get('/' , (req,res)=>{
-	res.send('hello karthik')
-});
+app.use(bodyParser.json());
 
-const PORT = process.env.PORT || 3000
+require('./routes/dialogFlowRoutes')(app);
 
-app.listen(PORT)
+
+
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT);
